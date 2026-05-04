@@ -17,7 +17,7 @@ public class DeletarUseCase {
 
     public String executar(UUID id) {
         Vampiro vampiroExistente = listarPorIdUseCase.executar(id);
-        deletarVampiroPorId.delatarById(vampiroExistente.getId());
+        deletarVampiroPorId.deletarById(vampiroExistente.getId());
 
         return ("Vampiro com id: %s deletado com sucesso!").formatted(vampiroExistente.getId());
     }

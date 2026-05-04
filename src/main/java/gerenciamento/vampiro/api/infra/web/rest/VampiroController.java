@@ -4,6 +4,7 @@ import gerenciamento.vampiro.api.core.application.usecase.vampiro.*;
 import gerenciamento.vampiro.api.core.application.usecase.vampiro.dto.VampiroRequestDto;
 import gerenciamento.vampiro.api.core.application.usecase.vampiro.dto.VampiroResponseDto;
 import gerenciamento.vampiro.api.core.domain.vampiro.Vampiro;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class VampiroController {
     }
 
     @PostMapping
-    public ResponseEntity<VampiroResponseDto> salvar(@RequestBody VampiroRequestDto dto) {
+    public ResponseEntity<VampiroResponseDto> salvar(@RequestBody @Valid VampiroRequestDto dto) {
         Vampiro vampiro = cadastrarUseCase.executar(dto);
         return ResponseEntity.status(201).body(VampiroResponseDto.toResponse(vampiro));
     }
@@ -60,7 +61,7 @@ public class VampiroController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<VampiroResponseDto> atualizar(@PathVariable UUID id, @RequestBody VampiroRequestDto dto) {
+    public ResponseEntity<VampiroResponseDto> atualizar(@PathVariable UUID id, @RequestBody @Valid VampiroRequestDto dto) {
         Vampiro vampiro = atualizarUseCase.executar(id, dto);
         return ResponseEntity.status(200).body(VampiroResponseDto.toResponse(vampiro));
     }

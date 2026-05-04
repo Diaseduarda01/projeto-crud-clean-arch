@@ -55,7 +55,7 @@ public class VampiroJpaAdapter implements AtualizarVampiro, DeletarVampiroPorId,
     }
 
     @Override
-    public void delatarById(UUID id) {
+    public void deletarById(UUID id) {
         Optional<Vampiro> vampiroExistente = findById(id);
         jpaRepository.deleteById(vampiroExistente.get().getId());
     }

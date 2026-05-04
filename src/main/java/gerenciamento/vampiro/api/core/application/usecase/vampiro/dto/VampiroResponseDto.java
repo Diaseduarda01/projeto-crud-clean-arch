@@ -7,7 +7,7 @@ import java.util.UUID;
 public class VampiroResponseDto {
 
     private UUID id;
-    private String nopme;
+    private String nome;
     private Integer idade;
     private String especie;
     private String status;
@@ -17,9 +17,9 @@ public class VampiroResponseDto {
     public VampiroResponseDto() {
     }
 
-    public VampiroResponseDto(UUID id, String nopme, Integer idade, String especie, String status, String cidade, Boolean estaCompelido) {
+    public VampiroResponseDto(UUID id, String nome, Integer idade, String especie, String status, String cidade, Boolean estaCompelido) {
         this.id = id;
-        this.nopme = nopme;
+        this.nome = nome;
         this.idade = idade;
         this.especie = especie;
         this.status = status;
@@ -47,12 +47,12 @@ public class VampiroResponseDto {
         this.id = id;
     }
 
-    public String getNopme() {
-        return nopme;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNopme(String nopme) {
-        this.nopme = nopme;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Integer getIdade() {
