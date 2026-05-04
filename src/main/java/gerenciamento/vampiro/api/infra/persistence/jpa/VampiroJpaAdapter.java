@@ -20,19 +20,7 @@ public class VampiroJpaAdapter implements AtualizarVampiro, DeletarVampiroPorId,
 
     @Override
     public Vampiro update(Vampiro dadosNovos) {
-       Optional<Vampiro> vampiroExistente = findById(dadosNovos.getId());
-
-        Vampiro vampiroAtualizado = Vampiro.atualizar(
-                vampiroExistente.get().getId(),
-                dadosNovos.getNome(),
-                dadosNovos.getIdade().getValue(),
-                dadosNovos.getEspecie().getValue(),
-                dadosNovos.getStatus().getValue(),
-                dadosNovos.getCidadeAtual(),
-                dadosNovos.getEstaCompelido()
-        );
-
-        VampiroEntity entity = VampiroMapper.toEntity(vampiroAtualizado);
+        VampiroEntity entity = VampiroMapper.toEntity(dadosNovos);
         VampiroEntity salvo = jpaRepository.save(entity);
         return VampiroMapper.toDomain(salvo);
     }
@@ -56,7 +44,6 @@ public class VampiroJpaAdapter implements AtualizarVampiro, DeletarVampiroPorId,
 
     @Override
     public void deletarById(UUID id) {
-        Optional<Vampiro> vampiroExistente = findById(id);
-        jpaRepository.deleteById(vampiroExistente.get().getId());
+        jpaRepository.deleteById(id);
     }
 }
